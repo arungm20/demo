@@ -1,0 +1,20 @@
+{
+
+  "language": "spring",
+  "library":"spring-boot",
+  
+  "apiPackage":"com.fs.investments.rest",
+  "invokerPackage":"com.fs.investments",
+  "basePackage":"com.fs.investments",
+  "configPackage":"com.fs.investments.config",
+  "modelPackage":"com.fs.investments.model",
+  
+  "interfaceOnly":"false",
+  
+  "generateSupportingFiles": "true",
+  "generateModelDocumentation": "true",
+  "generateApiDocumentation": "true",
+  "generateModels": "true",
+  "generateApis": "true"
+  
+}

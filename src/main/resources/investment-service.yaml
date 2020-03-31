@@ -1,0 +1,169 @@
+swagger: "2.0"
+info:
+  version: '1.0'
+  title: Broker Service
+  description: This App exposes API to consume and convert request to required formats
+schemes:
+  - http
+basePath: /v1/
+paths:
+  /investment/create:
+    post:
+      tags:
+      - Investment Service
+      summary: API to Create Investment
+      operationId: createInvestment
+      description: API receives Investment and saves into DB
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+        - in: body
+          name: investment
+          description: >-
+            Represents  investment entity
+          required: true
+          schema:
+            $ref: '#/definitions/InvestmentRequest'    
+      responses:
+        201:
+          description: Created
+        400:
+          description: Bad Request
+        500:
+          description: Internal Server Error
+  /investment/retrieve:
+    get:
+      tags:
+      - Investment Service
+      summary: API to retrieve investment
+      operationId: retrieveInvestment
+      description: API retrieves Investment corresponding to the id
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+        - in: query
+          name: id
+          description: >-
+            Represents  investment id to be retrieved
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+        400:
+          description: Bad Request
+        404:
+          description: Not Found          
+        500:
+          description: Internal Server Error
+  /investment/list:
+    get:
+      tags:
+      - Investment Service
+      summary: API to retrieve all investment
+      operationId: retrieveAllInvestment
+      description: APIto retrieve all investments
+      produces:
+      - text/html
+      responses:
+        200:
+          description: Ok
+        400:
+          description: Bad Request
+        404:
+          description: Not Found          
+        500:
+          description: Internal Server Error          
+  /investment/update:
+    patch:
+      tags:
+      - Investment Service
+      summary: API to retrieve investment
+      operationId: updateInvestment
+      description: API receives validated Investment updates in DB
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+        - in: query
+          name: id
+          description: >-
+            Represents  investment id to be retrieved
+          required: true
+          type: string
+        - in: body
+          name: investment
+          description: >-
+            Represents  investment entity
+          required: true
+          schema:
+            $ref: '#/definitions/InvestmentRequest'          
+      responses:
+        200:
+          description: Ok
+        400:
+          description: Bad Request
+        404:
+          description: Not Found          
+        500:
+          description: Internal Server Error
+  /investment/delete:
+    delete:
+      tags:
+      - Investment Service
+      summary: API to retrieve investment
+      operationId: deleteInvestment
+      description: API to delete investment in DB
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+        - in: query
+          name: id
+          description: >-
+            Represents  investment id to be retrieved
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+        400:
+          description: Bad Request
+        404:
+          description: Not Found          
+        500:
+          description: Internal Server Error                   
+definitions:
+  InvestmentRequest:
+    description: 'Investment Request object'
+    properties:
+      id:
+        type: string
+        description: investment Id
+      investmentIn:
+        type: string
+        description: investment in
+      investmentType:
+        type: string
+        description: investment Type
+      amount:
+        type: string
+        description: investment amount
+      remarks:
+        type: string
+        description: investment remarks
+      poc:
+        type: string
+        description: investment poc
+      investmentStartDate:
+        type: string
+        description: investment start date
+      investmentEndDate:
+        type: string
+        description: investment end date                                   
